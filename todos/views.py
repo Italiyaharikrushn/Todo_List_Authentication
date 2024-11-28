@@ -81,13 +81,13 @@ def addTask(request):
 
 # delete todo
 def delete_task(request, id):
-    item = Todo.objects.get(id=id)             
+    item = Todo.objects.get(id=id)        
 
     if request.method == "POST":
         if request.POST.get("confirm") == "Yes":
             item.delete()  
-            return redirect('home')
-        return redirect('home') 
+            return redirect('todo_list')
+        return redirect('todo_list') 
     
     return render(request, 'base/delete_todo.html', {'item': item})
 
