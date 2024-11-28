@@ -26,13 +26,15 @@
                         <!-- Name -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Name:</label>
-                            <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control" required>
+                            <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control"
+                                required>
                         </div>
 
                         <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" placeholder="Enter Email" class="form-control" required>
+                            <input type="email" id="email" name="email" placeholder="Enter Email" class="form-control"
+                                required>
                         </div>
 
                         <!-- Phone -->
@@ -45,7 +47,8 @@
                         <!-- Password -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>
-                            <input type="password" id="password" name="password" placeholder="Enter Password" class="form-control" required>
+                            <input type="password" id="password" name="password" placeholder="Enter Password"
+                                class="form-control" required>
                         </div>
 
                         <!-- Gender -->
@@ -62,13 +65,15 @@
                         <!-- Age -->
                         <div class="mb-3">
                             <label for="age" class="form-label">Age:</label>
-                            <input type="number" id="age" name="age" placeholder="Enter Age" class="form-control" required>
+                            <input type="number" id="age" name="age" placeholder="Enter Age" class="form-control"
+                                required>
                         </div>
 
                         <!-- Profession -->
                         <div class="mb-3">
                             <label for="profession" class="form-label">Profession:</label>
-                            <input type="text" id="profession" name="profession" placeholder="Enter Profession" class="form-control" required>
+                            <input type="text" id="profession" name="profession" placeholder="Enter Profession"
+                                class="form-control" required>
                         </div>
 
                         <!-- Submit -->
@@ -84,14 +89,21 @@
         </div>
     </section>
 
-    <section class="text-center my-4">
-        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="log">
+                    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                </div>
+            </div>
+        </div>
     </section>
+
 
     <script>
         const phoneInput = document.getElementById('phone');
-        
-        phoneInput.addEventListener('input', function() {
+
+        phoneInput.addEventListener('input', function () {
             if (!this.value.startsWith('+91-')) {
                 this.value = '+91-';
             }

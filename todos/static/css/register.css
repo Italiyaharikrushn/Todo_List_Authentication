@@ -34,7 +34,6 @@ form {
     background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
-    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -72,30 +71,21 @@ form button:hover {
     background-color: #0056b3;
 }
 
-/* Error Message */
-.alert {
-    color: #d9534f;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-    background-color: #f8d7da;
-}
-
-/* Footer Styling */
-footer {
-    margin-top: 20px;
-    background-color: #f1f1f1;
-    padding: 10px 0;
+.log {
     text-align: center;
+    padding: 20px;
+}
+.log p {
+    font-size: 16px;
+    color: #495057;
 }
 
-footer a {
-    color: #007bff;
+/* Link styling */
+.log a {
     text-decoration: none;
+    font-weight: bold;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.log a:hover {
+    text-decoration: none;
 }
