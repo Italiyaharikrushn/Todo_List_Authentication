@@ -65,7 +65,7 @@ def addTask(request):
         dropdown_submit = request.POST.get('dropdown_submit', False)
 
         if dropdown_submit:
-            return render(request, 'add.html', {
+            return render(request, 'base/add_todo.html', {
                 'task': {'title': title, 'desc': desc, 'status': status, 'completion_date': completion_date}
             })
 
