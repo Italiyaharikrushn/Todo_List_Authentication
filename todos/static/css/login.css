@@ -8,9 +8,6 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, input, button, select {
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
-    align-items: center;
-    display: flex;
-    justify-content: center;
     margin: 0;
 }
 
@@ -25,7 +22,6 @@ header h2 {
     font-weight: bold;
 }
 
-/* Form Container */
 form {
     background-color: #ffffff;
     border-radius: 8px;

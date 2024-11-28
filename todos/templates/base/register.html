@@ -13,13 +13,16 @@
 </head>
 
 <body>
+    <!-- header -->
     <header class="my-4">
         <h2>Registration Form</h2>
     </header>
+
+    <!-- register form -->
     <section>
         <div class="container">
             <div class="row box">
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <form method="POST" class="p-4">
                         {% csrf_token %}
 
@@ -89,17 +92,23 @@
         </div>
     </section>
 
+    <!-- login link -->
     <section>
         <div class="container">
             <div class="row">
-                <div class="log">
-                    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                <div class="col-12">
+                    <div class="log">
+                        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
+    <!-- Java-Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pzjw8f+ua7Kw1TIq0m3p3tbPpveKjHrpbbT3NxAYfg/cf6jaX22tWjWm6p6p6l9H"
+        crossorigin="anonymous"></script>
     <script>
         const phoneInput = document.getElementById('phone');
 
