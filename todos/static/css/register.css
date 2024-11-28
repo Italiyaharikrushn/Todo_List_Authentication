@@ -10,7 +10,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f7f7f7;
-    justify-content: center;
     align-items: center;
 }
 
@@ -26,11 +25,16 @@ header h2 {
     font-weight: bold;
 }
 
+.box{
+    justify-content: center;
+}
+
 /* Form Container */
 form {
     background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
+    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
