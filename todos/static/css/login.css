@@ -1,79 +1,104 @@
 /* General Reset */
-* {
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, input, button, select {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    padding-top: 40px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    align-items: center;
     display: flex;
-    height: 100vh; /* Full viewport height */
+    justify-content: center;
     margin: 0;
 }
 
 /* Header Styling */
 header {
-    color: #495057;
-    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-/* Form Styling */
+header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Form Container */
 form {
     background-color: #ffffff;
-    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    justify-content: center;
-}
-
-form .form-label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #495057;
-}
-
-form .form-control {
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    padding: 12px;
-    font-size: 1rem;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease;
+    max-width: 400px;
+    margin: auto;
 }
 
-form .form-control:focus {
+/* Form Input Styling */
+form label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+form input:focus, form select:focus {
     border-color: #007bff;
     outline: none;
 }
 
 /* Button Styling */
-button[type="submit"] {
+form button {
     background-color: #007bff;
-    color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    width: 100%;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
+    border: none;
     transition: background-color 0.3s ease;
+    padding: 12px;
+    font-size: 1.1rem;
 }
 
-button[type="submit"]:hover {
+form button:hover {
     background-color: #0056b3;
 }
 
-/* Error Message Styling */
+/* Error Message */
 .alert {
-    background-color: #f8d7da;
-    color: #721c24;
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    padding: 10px;
     border: 1px solid #f5c6cb;
     border-radius: 4px;
-    padding: 10px;
-    margin-top: 15px;
+    background-color: #f8d7da;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #333;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
