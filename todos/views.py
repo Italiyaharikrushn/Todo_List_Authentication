@@ -14,11 +14,6 @@ def register(request):
         age = request.POST['age']
         profession = request.POST['profession']
 
-        # Check if email already exists
-        if User.objects.filter(email=email).exists():
-            messages.error(request, "Email is already registered!")
-            return render(request, 'base/register.html')
-
         # Create a new user
         User.objects.create(
             name=name, email=email, phone=phone, password=password,
