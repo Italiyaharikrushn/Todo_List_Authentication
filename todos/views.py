@@ -50,13 +50,11 @@ def login(request):
 
     return render(request, 'base/login.html')
 
-
 # Logout View
 def logout(request):
     request.session.flush()
     messages.info(request, "You have been logged out.")
     return redirect('login')
-
 
 # To-Do List View
 def todo_list(request):

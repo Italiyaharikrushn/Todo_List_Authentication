@@ -14,31 +14,6 @@
 </head>
 
 <body>
-    <!-- <div class="to-do-list">
-        <div class="heading">
-            <h3 class="text-5xl mt-4">To-Do List</h3>
-        </div>
-        <form id="todo-form" action="{% url 'add' %}">
-            <button id="addlist">Add Your Task</button>
-        </form>
-        <div class="contain">
-            {% if no_items_message %}
-                <div class="alert alert-warning">{{ no_items_message }}</div>
-            {% else %}
-                {% for i in todos %}
-                    <div class="task-item styled-div">
-                        <h5>{{ i.title }}</h5>
-                        <p>{{ i.desc }}</p>
-                        <p>Status: {{ i.status }}</p>
-                        <p>Completion Date: {{ i.completion_date }}</p>
-                        <a href="{% url 'edit_task' i.id %}">Edit</a>
-                        <a href="{% url 'delete_task' i.id %}">Delete</a>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-    </div>     -->
-
     <div class="to-do-list">
         <div class="heading">
             <h3 class="text-5xl mt-4">To-Do List</h3>
@@ -47,8 +22,9 @@
             <form id="todo-form" action="{% url 'add' %}">
                 <button id="addlist">Add Your Task</button>
             </form>
-
-            <!--  -->
+            <form id="todo-form" action="{% url 'logout' %}">
+                <button id="addlist">logout</button>
+            </form>
             
             {% for i in todos %}
             <div class="flex justify-center">
