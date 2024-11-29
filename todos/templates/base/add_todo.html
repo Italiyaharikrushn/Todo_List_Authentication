@@ -27,8 +27,8 @@
 
                 <label for="todostatus">Status:</label>
                 <select name="status" id="todostatus">
-                    <option value="Incomplete" {% if task.status is "Incomplete" %}selected{% endif %}>Incomplete</option>
-                    <option value="Complete" {% if task.status is "Complete" %}selected{% endif %}>Complete</option>
+                    <option value="Incomplete" {% if task.status == "Incomplete" %}selected{% endif %}>Incomplete</option>
+                    <option value="Complete" {% if task.status == "Complete" %}selected{% endif %}>Complete</option>
                 </select>
                 
 
