@@ -67,7 +67,6 @@ input[type="text"] {
     color: #555;
 }
 
-
 .styled-table tr:nth-child(even) {
     background-color: #f0f0f0;
 }

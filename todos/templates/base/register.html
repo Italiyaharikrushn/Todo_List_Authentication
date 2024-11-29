@@ -13,12 +13,10 @@
 </head>
 
 <body>
-    <!-- header -->
     <header class="my-4">
         <h2>Registration Form</h2>
     </header>
 
-    <!-- register form -->
     <section>
         <div class="container">
             <div class="row box">
@@ -26,35 +24,30 @@
                     <form method="POST" class="p-4">
                         {% csrf_token %}
 
-                        <!-- Name -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Name:</label>
                             <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control"
                                 required>
                         </div>
 
-                        <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
                             <input type="email" id="email" name="email" placeholder="Enter Email" class="form-control"
                                 required>
                         </div>
 
-                        <!-- Phone -->
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone:</label>
                             <input type="text" id="phone" name="phone" maxlength="14" class="form-control" value="+91-"
                                 required>
                         </div>
 
-                        <!-- Password -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>
                             <input type="password" id="password" name="password" placeholder="Enter Password"
                                 class="form-control" required>
                         </div>
 
-                        <!-- Gender -->
                         <div class="mb-3">
                             <label for="gender" class="form-label">Gender:</label>
                             <select id="gender" name="gender" class="form-select">
@@ -65,25 +58,21 @@
                             </select>
                         </div>
 
-                        <!-- Age -->
                         <div class="mb-3">
                             <label for="age" class="form-label">Age:</label>
                             <input type="number" id="age" name="age" placeholder="Enter Age" class="form-control"
                                 required>
                         </div>
 
-                        <!-- Profession -->
                         <div class="mb-3">
                             <label for="profession" class="form-label">Profession:</label>
                             <input type="text" id="profession" name="profession" placeholder="Enter Profession"
                                 class="form-control" required>
                         </div>
 
-                        <!-- Submit -->
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                     </form>
 
-                    <!-- Error Message -->
                     {% if error %}
                     <p class="text-danger mt-3">{{ error }}</p>
                     {% endif %}
@@ -92,7 +81,6 @@
         </div>
     </section>
 
-    <!-- login link -->
     <section>
         <div class="container">
             <div class="row">

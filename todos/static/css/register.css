@@ -13,7 +13,6 @@ body {
     align-items: center;
 }
 
-/* Header Styling */
 header {
     text-align: center;
     margin-top: 20px;
@@ -30,7 +29,6 @@ header h2 {
     justify-content: center;
 }
 
-/* Form Container */
 form {
     background-color: #ffffff;
     border-radius: 8px;
@@ -81,7 +79,6 @@ form button:hover {
     color: #495057;
 }
 
-/* Link styling */
 .log a {
     text-decoration: none;
     font-weight: bold;
