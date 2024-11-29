@@ -1,8 +1,135 @@
+# from django.shortcuts import render, redirect
+# from django.contrib.auth.hashers import make_password, check_password
+# from .models import User, Todo
+# from django.contrib import messages
+
+
+# # Registration View
+# def register(request):
+#     if request.method == 'POST':
+#         name = request.POST['name']
+#         email = request.POST['email']
+#         phone = request.POST['phone']
+#         password = make_password(request.POST['password'])
+#         gender = request.POST['gender']
+#         age = request.POST['age']
+#         profession = request.POST['profession']
+
+#         if User.objects.filter(email=email).exists():
+#             return render(request, 'base/register.html', {'error': 'Email is already registered!'})
+
+#         User.objects.create(
+#             name=name, email=email, phone=phone, password=password,
+#             gender=gender, age=age, profession=profession
+#         )
+#         return redirect('login')
+
+#     return render(request, 'base/register.html')
+
+
+# # Login View
+# def login(request):
+#     if request.method == 'POST':
+#         email = request.POST['email']
+#         password = request.POST['password']
+
+#         try:
+#             user = User.objects.get(email=email)
+#             if check_password(password, user.password):
+#                 request.session['user_id'] = user.id
+#                 request.session['user_name'] = user.name
+#                 return redirect('todo_list')
+#             else:
+#                 return render(request, 'base/login.html', {'error': 'Invalid credentials!'})
+#         except User.DoesNotExist:
+#             return render(request, 'base/login.html', {'error': 'User does not exist!'})
+
+#     return render(request, 'base/login.html')
+
+
+# def logout(request):
+#     request.session.flush()
+#     return redirect('login')
+
+# # To-Do List View
+# def todo_list(request):
+#     if 'user_id' not in request.session:
+#         return redirect('login')
+    
+#     user_id = request.session['user_id']
+#     todos = Todo.objects.filter(user_id=user_id)
+    
+#     no_items_message = "No tasks to show" if not todos else None
+    
+#     return render(request, 'base/todo_list.html', {'todos': todos, 'no_items_message': no_items_message})
+
+# # Add Task View
+# def addTask(request):
+#     if 'user_id' not in request.session:
+#         return redirect('login')
+
+#     user_id = request.session['user_id']
+
+#     if request.method == 'POST':
+#         title = request.POST.get('title')
+#         desc = request.POST.get('desc')
+#         status = request.POST.get('status')
+#         completion_date = request.POST.get('completion_date') if status == 'Complete' else None
+
+#         if not Todo.objects.filter(title=title, user_id=user_id).exists():
+#             Todo.objects.create(
+#                 title=title, desc=desc, status=status,
+#                 completion_date=completion_date, user_id=user_id
+#             )
+#             return redirect('todo_list')
+#         else:
+#             messages.warning(request, "This item is already in your list")
+#             return redirect('add')
+
+#     return render(request, 'base/add_todo.html')
+
+# # Delete Task View
+# def delete_task(request, id):
+#     if 'user_id' not in request.session:
+#         return redirect('login')
+
+#     task = Todo.objects.get(id=id, user_id=request.session['user_id'])
+
+#     if request.method == "POST":
+#         task.delete()
+#         return redirect('todo_list')
+
+#     return render(request, 'base/delete_todo.html', {'item': task})
+
+# # Edit Task View
+# def editTask(request, id):
+#     if 'user_id' not in request.session:
+#         return redirect('login')
+
+#     task = Todo.objects.get(id=id, user_id=request.session['user_id'])
+
+#     if request.method == 'POST':
+#         task.title = request.POST.get('title')
+#         task.desc = request.POST.get('desc')
+#         task.status = request.POST.get('status')
+#         completion_date = request.POST.get('completion_date')
+
+#         if task.status == 'Complete':
+#             task.completion_date = completion_date or task.completion_date
+#         else:
+#             task.completion_date = None
+
+#         task.save()
+#         messages.success(request, 'Task updated successfully.')
+#         return redirect('todo_list')
+
+#     return render(request, 'base/edit_todo.html', {'task': task})
+
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
-from .models import User, Todo
 from django.contrib import messages
-
+from .models import User, Todo
 
 # Registration View
 def register(request):
@@ -15,16 +142,21 @@ def register(request):
         age = request.POST['age']
         profession = request.POST['profession']
 
+        # Check if email already exists
         if User.objects.filter(email=email).exists():
-            return render(request, 'base/register.html', {'error': 'Email is already registered!'})
+            messages.error(request, "Email is already registered!")
+            return render(request, 'base/register.html')
 
+        # Create a new user
         User.objects.create(
             name=name, email=email, phone=phone, password=password,
             gender=gender, age=age, profession=profession
         )
+        messages.success(request, "Registration successful! You can now log in.")
         return redirect('login')
 
     return render(request, 'base/register.html')
+
 
 # Login View
 def login(request):
@@ -37,51 +169,69 @@ def login(request):
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
                 request.session['user_name'] = user.name
+                messages.success(request, f"Welcome, {user.name}!")
                 return redirect('todo_list')
             else:
-                return render(request, 'base/login.html', {'error': 'Invalid credentials!'})
+                messages.error(request, 'Invalid password.')
         except User.DoesNotExist:
-            return render(request, 'base/login.html', {'error': 'User does not exist!'})
+            messages.error(request, 'User does not exist.')
 
     return render(request, 'base/login.html')
 
+
+# Logout View
 def logout(request):
     request.session.flush()
+    messages.info(request, "You have been logged out.")
     return redirect('login')
 
-def todo_list(request):
-    todos = Todo.objects.all()
-    return render(request, 'base/todo_list.html', {'todos': todos})
 
-# add todo
+# To-Do List View
+def todo_list(request):
+    if 'user_id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['user_id']
+    todos = Todo.objects.filter(user_id=user_id)
+
+    # Display a message if there are no tasks
+    no_items_message = "No tasks to show" if not todos else None
+
+    return render(request, 'base/todo_list.html', {'todos': todos, 'no_items_message': no_items_message})
+
+
+# Add Task View
 def addTask(request):
+    if 'user_id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['user_id']
+
     if request.method == 'POST':
         title = request.POST.get('title')
         desc = request.POST.get('desc')
         status = request.POST.get('status')
-        
         completion_date = request.POST.get('completion_date') if status == 'Complete' else None
 
-        dropdown_submit = request.POST.get('dropdown_submit', False)
+        # Check for duplicate tasks
+        if Todo.objects.filter(title=title, user_id=user_id).exists():
+            messages.warning(request, "This task is already in your list.")
+            return redirect('addtask')
 
-        if dropdown_submit:
-            return render(request, 'base/add_todo.html', {
-                'task': {'title': title, 'desc': desc, 'status': status, 'completion_date': completion_date}
-            })
-
-        if not Todo.objects.filter(title=title).exists():
-            todo = Todo(title=title, desc=desc, status=status, completion_date=completion_date)
-            todo.save() 
-            return redirect('todo_list')
-        else:
-            messages.warning(request, "This item is already in your list")
-            return redirect('add')
+        # Create the task
+        Todo.objects.create(
+            title=title, desc=desc, status=status,
+            completion_date=completion_date, user_id=user_id
+        )
+        messages.success(request, "Task added successfully!")
+        return redirect('todo_list')
 
     return render(request, 'base/add_todo.html')
 
-# delete todo
+
+# Delete Task View
 def delete_task(request, id):
-    item = Todo.objects.get(id=id)        
+    item = Todo.objects.get(id=id)             
 
     if request.method == "POST":
         if request.POST.get("confirm") == "Yes":
@@ -91,7 +241,7 @@ def delete_task(request, id):
     
     return render(request, 'base/delete_todo.html', {'item': item})
 
-# edit todo
+# Edit Task View
 def editTask(request, id):
     task = Todo.objects.get(id=id)
 
