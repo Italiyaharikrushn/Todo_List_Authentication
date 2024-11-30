@@ -60,7 +60,11 @@ def addTask(request):
         desc = request.POST.get('desc')
         status = request.POST.get('status')
         completion_date = request.POST.get('completion_date') if status == 'Complete' else None
-
+        dropdown_submit = request.POST.get('dropdown_submit', False)
+        if dropdown_submit:
+            return render(request, 'base/add_todo.html', {
+                'task': {'title': title, 'desc': desc, 'status': status, 'completion_date': completion_date}
+            })
         if Todo.objects.filter(title=title, user_id=user_id).exists():
             return redirect('addtask')
 
