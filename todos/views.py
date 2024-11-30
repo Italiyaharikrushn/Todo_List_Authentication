@@ -25,7 +25,6 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
 
-
         user = User.objects.get(email=email)
         if check_password(password, user.password):
             request.session['user_id'] = user.id
@@ -45,9 +44,7 @@ def todo_list(request):
     user_id = request.session['user_id']
     todos = Todo.objects.filter(user_id=user_id)
 
-    no_items_message = "No tasks to show" if not todos else None
-
-    return render(request, 'base/todo_list.html', {'todos': todos, 'no_items_message': no_items_message})
+    return render(request, 'base/todo_list.html', {'todos': todos})
 
 def addTask(request):
     if 'user_id' not in request.session:
