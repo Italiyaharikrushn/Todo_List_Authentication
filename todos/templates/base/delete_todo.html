@@ -3,26 +3,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/delete.css' %}">
-    <title>Delete Confirmation</title>
+</head>
 
 <body>
-    <div class="heading">
-        <h3 class="text-5xl mt-4">Are you sure you want to delete "{{ item.title }}"?</h3>
-    </div>
-    <div class="contain">
-        <form method="POST">
-            {% csrf_token %}
-            <button type="submit" id="addlist" name="confirm" value="Yes">Yes</button>
-            <button type="submit" id="addlist" name="confirm" value="No">No</button>
-        </form>
-    </div>
+    <section class="mt-5">
+        <div class="container text-center">
+            <h3 class="text-5xl mt-4">Are you sure you want to delete "{{ item.title }}"?</h3>
+        </div>
+    </section>
+
+    <section class="mt-4">
+        <div class="container text-center">
+            <form method="POST" class="d-inline-block">
+                {% csrf_token %}
+                <button type="submit" name="confirm" value="Yes" class="btn btn-success me-3">Yes</button>
+                <button type="submit" name="confirm" value="No" class="btn btn-danger">No</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-cPL1rcvFREAmB8eUABiEYZe2YhTlvc6IMqF6GEk7x3D6Nri7t3KeqjBSwWGjRI8g" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

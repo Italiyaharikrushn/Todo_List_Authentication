@@ -6,36 +6,30 @@ body {
 }
 
 .to-do-list {
-    width: 1263;
-    height: 924px;
+    min-height: 100vh;
 }
 
 h3 {
     text-align: center;
+    font-weight: bold;
 }
 
-.contain {
-    text-align: center;
-    margin-top: 40px;
-}
-
-input[type="text"] {
-    width: 900px;
-    padding: 12px;
-    font-family: "Nunito", sans-serif;
-    font-size: 15px;
-    border: 1px solid black;
-}
-
-#addlist {
+#addlist,
+#logout-button {
     width: 200px;
     padding: 12px;
     font-family: "Nunito", sans-serif;
     font-size: 15px;
     color: white;
-    background-color: rgba(2, 93, 2, 0.514);
-    border: 1px solid rgba(2, 93, 2, 0.514);
+    background-color: #025d02;
+    border: none;
     border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+#addlist:hover,
+#logout-button:hover {
+    background-color: #004900;
 }
 
 .styled-div {
@@ -54,17 +48,12 @@ input[type="text"] {
 .styled-table td {
     padding: 12px;
     vertical-align: top;
+    color: #555;
 }
 
 .styled-table .label {
-    width: 25%;
     font-weight: bold;
     color: #333;
-}
-
-.styled-table .value {
-    width: 75%;
-    color: #555;
 }
 
 .styled-table tr:nth-child(even) {
@@ -75,76 +64,12 @@ input[type="text"] {
     background-color: #e0e0e0;
 }
 
-input[type="checkbox"],
-.styled-table td {
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    margin-right: 10px;
-}
-
-.todo-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.todo-form input[type="text"],
-.todo-form textarea,
-.todo-form select,
-.todo-form input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.todo-form textarea {
-    resize: vertical;
-    height: 80px;
-}
-
-.todo-form button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+.styled-table td .fa-trash {
+    color: #e61429;
     cursor: pointer;
-    font-size: 16px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
 }
 
-.todo-form button:hover {
-    background-color: #218838;
-}
-
-.todo-form label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.todo-form input,
-.todo-form textarea,
-.todo-form select {
-    transition: border-color 0.3s ease;
-}
-
-.todo-form input:focus,
-.todo-form textarea:focus,
-.todo-form select:focus,
-.todo-form input[type="date"]:focus {
-    border-color: #28a745;
-    outline: none;
+.styled-table td .fa-pen-to-square {
+    color: #1f9707;
+    cursor: pointer;
 }

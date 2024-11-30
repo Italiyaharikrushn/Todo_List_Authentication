@@ -5,66 +5,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/todo_list.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>To-Do List</title>
 </head>
 
 <body>
     <div class="to-do-list">
-        <div class="heading">
-            <h3 class="text-5xl mt-4">To-Do List</h3>
-        </div>
-        <div class="contain">
-            <form id="todo-form" action="{% url 'add' %}">
-                <button id="addlist">Add Your Task</button>
-            </form>
-            <form id="todo-form" action="{% url 'logout' %}">
-                <button id="addlist">logout</button>
-            </form>
-            
-            {% for i in todos %}
-            <div class="flex justify-center">
-                <div class="border border-black mt-3 w-2/4 styled-div">
-                    <div class="p-1">
-                        <table class="styled-table">
-                            <tr>
-                                <td class="label">Task</td>
-                                <td class="value">{{i.title}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Description</td>
-                                <td class="value">{{i.desc}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Status</td>
-                                <td class="value">{{i.status}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Completion Date</td>
-                                <td class="value">{{i.completion_date}}</td>
-                            </tr>
-                            <tr>
-                                <td class="value" colspan="2">
-                                    <a href="{% url 'delete_task' i.id %}"><i class="fa-solid fa-trash m-2"
-                                            style="color: #e61429;"></i></a>
-                                    <a href="{% url 'edit_task' i.id %}"><i class="fa-regular fa-pen-to-square m-2"
-                                            style="color: #1f9707;"></i></a>
-                                </td>
-                            </tr>
-                        </table>
+        <!-- Header Section -->
+        <section>
+            <div class="container text-center">
+                <h3 class="text-5xl mt-4">To-Do List</h3>
+            </div>
+        </section>
+
+        <!-- Add Task Section -->
+        <section>
+            <div class="container text-center mt-4">
+                <form id="todo-form" action="{% url 'add' %}">
+                    <button id="addlist">Add Your Task</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Logout Section -->
+        <section>
+            <div class="container text-center mt-4">
+                <form id="logout-form" action="{% url 'logout' %}">
+                    <button id="logout-button">Logout</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Task List Section -->
+        <section>
+            <div class="container mt-4">
+                {% for i in todos %}
+                <div class="flex justify-center">
+                    <div class="styled-div w-2/4 mt-3">
+                        <div class="p-3">
+                            <table class="styled-table">
+                                <tr>
+                                    <td class="label">Task</td>
+                                    <td class="value">{{ i.title }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Description</td>
+                                    <td class="value">{{ i.desc }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Status</td>
+                                    <td class="value">{{ i.status }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Completion Date</td>
+                                    <td class="value">{{ i.completion_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <a href="{% url 'delete_task' i.id %}">
+                                            <i class="fa-solid fa-trash m-2 text-danger"></i>
+                                        </a>
+                                        <a href="{% url 'edit_task' i.id %}">
+                                            <i class="fa-regular fa-pen-to-square m-2 text-success"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+        </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"></script>
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
