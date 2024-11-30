@@ -3,8 +3,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{% static 'css/add.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -20,7 +20,7 @@
             <h3 class="text-4xl mt-4">To-Do List</h3>
         </div>
         <div class="contain">
-            <form id="todo-form" class="todo-form mb-3" method="post">
+            <form id="todo-form" class="todo-form" method="post">
                 {% csrf_token %}
                 <input type="text" name="title" id="todotext" placeholder="Add a Task." value="{{task.title}}" />
                 <textarea name="desc" id="tododesc" placeholder="Task Description" required>{{task.desc}}</textarea>
@@ -45,6 +45,19 @@
                 <button id="addlist">Want to see your Task ?</button>
             </form>
         </div>
+
+        <!-- <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <h1>To-Do List</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
