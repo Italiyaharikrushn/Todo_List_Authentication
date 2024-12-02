@@ -32,8 +32,11 @@ header h2 {
 form {
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
 }
 
 form label {
@@ -44,7 +47,7 @@ form label {
 }
 
 form input, form select, form button {
-    width: 100%;
+    /* width: 100%; */
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
