@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User, Todo
 
+# This function handles user registration
 def register(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -20,6 +21,7 @@ def register(request):
 
     return render(request, 'base/register.html')
 
+# This function handles the user login process
 def login(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -33,10 +35,12 @@ def login(request):
 
     return render(request, 'base/login.html')
 
+# This function handles user logout
 def logout(request):
     request.session.flush()
     return redirect('login')
 
+# This function displays the to-do list for the logged-in user
 def todo_list(request):
     if 'user_id' not in request.session:
         return redirect('login')
@@ -46,6 +50,7 @@ def todo_list(request):
 
     return render(request, 'base/todo_list.html', {'todos': todos})
 
+# This function handles adding a new task for the logged-in user
 def addTask(request):
     if 'user_id' not in request.session:
         return redirect('login')
@@ -73,6 +78,7 @@ def addTask(request):
 
     return render(request, 'base/add_todo.html')
 
+# This function handles the deletion of a specific task
 def delete_task(request, id):
     item = Todo.objects.get(id=id)             
 
@@ -84,6 +90,7 @@ def delete_task(request, id):
 
     return render(request, 'base/delete_todo.html', {'item': item})
 
+# This function handles editing an existing task
 def editTask(request, id):
     task = Todo.objects.get(id=id)
 
